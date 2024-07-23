@@ -67,6 +67,13 @@ describe('basic', () => {
         .should('be.visible')
         .and('contain', 'Valide os campos obrigatórios')
     });
+
+    it('campo só aceita se valor número, se digitar um valor não-numérico, seu valor continuará vazio.', () => {
+      cy.get('#phone')
+        .should('be.visible')
+        .type('joao@email.com', { delay: 0})
+        .should('have.value', '')
+    });
   });
  
 })
