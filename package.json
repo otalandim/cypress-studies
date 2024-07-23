@@ -1,0 +1,25 @@
+{
+  "name": "cypress-studies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otalandim/cypress-studies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otalandim/cypress-studies/issues"
+  },
+  "homepage": "https://github.com/otalandim/cypress-studies#readme",
+  "devDependencies": {
+    "cypress": "^11.2.0"
+  }
+}
