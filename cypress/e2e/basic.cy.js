@@ -102,6 +102,36 @@ describe('basic', () => {
         .should('be.visible')
         .and('contain', 'Valide os campos obrigatórios')
     });
+
+    it('preenche e limpa os campos nome, sobrenome, email e telefone', () => {
+      cy.get('#firstName')
+        .should('be.visible')
+        .type('Joao')
+        .should('have.value', 'Joao')
+        .clear()
+        .should('have.value', '')
+      cy.get('#lastName')
+        .should('be.visible')
+        .type('Landim')
+        .should('have.value', 'Landim')
+        .clear()
+        .should('have.value', '')
+      cy.get('#email')
+        .should('be.visible')
+        .type('joao@email.com')
+        .should('have.value', 'joao@email.com')
+        .clear()
+        .should('have.value', '')
+      cy.get('#phone-checkbox')
+        .should('be.visible')
+        .check()
+      cy.get('#phone')
+        .should('be.visible')
+        .type('435345435454')
+        .should('have.value', '435345435454')
+        .clear()
+        .should('have.value', '')
+    });
   });
  
 })
