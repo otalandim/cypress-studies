@@ -58,6 +58,15 @@ describe('basic', () => {
         .should('be.visible')
         .and('contain', 'Mensagem enviada com sucesso')
     })
+
+    it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
+      cy.contains('button', 'Enviar')
+        .should('be.visible')
+        .click()
+      cy.get('.error')
+        .should('be.visible')
+        .and('contain', 'Valide os campos obrigatórios')
+    });
   });
  
 })
