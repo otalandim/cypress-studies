@@ -3,7 +3,7 @@ describe('basic', () => {
 
     beforeEach(() => {
       cy.visit('../../src/index.html')
-    });
+    })
 
     it('verifica o título da aplicação', () => {
       cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
@@ -66,14 +66,14 @@ describe('basic', () => {
       cy.get('.error')
         .should('be.visible')
         .and('contain', 'Valide os campos obrigatórios')
-    });
+    })
 
     it('campo só aceita se valor número, se digitar um valor não-numérico, seu valor continuará vazio.', () => {
       cy.get('#phone')
         .should('be.visible')
         .type('joao@email.com', { delay: 0})
         .should('have.value', '')
-    });
+    })
 
     it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
       cy.get('#firstName')
@@ -101,7 +101,37 @@ describe('basic', () => {
       cy.get('.error')
         .should('be.visible')
         .and('contain', 'Valide os campos obrigatórios')
-    });
-  });
+    })
+
+    it('preenche e limpa os campos nome, sobrenome, email e telefone', () => {
+      cy.get('#firstName')
+        .should('be.visible')
+        .type('Joao')
+        .should('have.value', 'Joao')
+        .clear()
+        .should('have.value', '')
+      cy.get('#lastName')
+        .should('be.visible')
+        .type('Landim')
+        .should('have.value', 'Landim')
+        .clear()
+        .should('have.value', '')
+      cy.get('#email')
+        .should('be.visible')
+        .type('joao@email.com')
+        .should('have.value', 'joao@email.com')
+        .clear()
+        .should('have.value', '')
+      cy.get('#phone-checkbox')
+        .should('be.visible')
+        .check()
+      cy.get('#phone')
+        .should('be.visible')
+        .type('435345435454')
+        .should('have.value', '435345435454')
+        .clear()
+        .should('have.value', '')
+    })
+  })
  
 })
